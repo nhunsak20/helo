@@ -27,7 +27,7 @@ class Auth extends Component {
     loginClick() {
         const { username, password } = this.state
 
-        axios.post('/api/login', {username, password}).then(res => {
+        axios.post('/api/auth/login', {username, password}).then(res => {
             this.props.getUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => {
@@ -38,7 +38,7 @@ class Auth extends Component {
     register() {
         const { username, password } = this.state
 
-        axios.post('/api/register', { username, password }).then(res => {
+        axios.post('/api/auth/register', { username, password }).then(res => {
             this.props.getUser(res.data)
             this.props.history.push('/dashboard')
         }).catch(err => {
@@ -62,7 +62,7 @@ class Auth extends Component {
                         </div>
                         <div className='auth-input-row'>
                             <label>Password:</label>
-                            <input type='password' name='password' onChange={ this.handleInputChange }/>
+                            <input type='password' placeholder='' name='password' onChange={ this.handleInputChange }/>
                         </div>
 
                     </div>

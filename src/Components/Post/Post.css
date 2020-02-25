@@ -1,0 +1,84 @@
+.post-section{
+    position: relative;
+    display: flex; 
+    align-items: flex-start;
+    justify-content: center;
+    height: 100vh;
+    width: calc(100vw - 90px);
+    left: 90px;
+    background-color: #f2f2f2;
+}
+
+.post{
+    display: flex;
+    flex-flow: column;
+    width: 70%;
+    box-sizing: border-box;
+
+    margin: 20px auto;
+    background-color: white;
+}
+
+.post-header{
+    display: flex;
+    flex-flow: row;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    padding: 0 20px;
+    padding-top: 10px;
+}
+
+.post-header h1{
+    font-size: 3rem;
+    color: #ff9770;
+}
+
+.post-box-img-content{
+    display: flex;
+    flex-flow: row;
+    padding: 20px;
+}
+
+.post-img-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 275px;
+    box-sizing: border-box;
+}
+
+.post-img {
+    height: 90%;
+    padding: 10px;
+}
+
+.post-content {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    width: 50%;
+
+    justify-content: space-between;
+    align-items: flex-end;
+
+}
+
+.post-content p {
+    text-align: left;
+    width: 90%;
+    height: 80%;
+    padding: 0 20px;
+}
+
+.delete-button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+

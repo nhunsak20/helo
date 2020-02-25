@@ -26,15 +26,21 @@ class Form extends Component {
     }
 
     submitClick() {
-        axios.post(`/api/posts/${this.props.user.id}`,{
-            title: this.state.title,
-            img: this.state.img,
-            content: this.state.content
-        }).then(() => {
-            this.props.history.push('/dashboard')
-        }).catch(err => {
-            alert(err.request.response)
-        })
+        const { title, img, content } = this.state
+
+        if (title && content) {
+            axios.post(`/api/posts/${this.props.user.user_id}`,{
+                title: title,
+                img: img,
+                content: content
+            }).then(() => {
+                this.props.history.push('/dashboard')
+            }).catch(err => {
+                alert(err.request.response)
+            })
+        } else {
+            alert('Please filled it out')
+        }
     }   
 
     onError(event) {
@@ -43,26 +49,25 @@ class Form extends Component {
     }
 
     render(){
-        console.log(this.props.user)
         return (
             <section className='form'>
-                <div>
+                <div className='form-box shadow'>
                     <h1>New Post</h1>
-                    <div>
-                        <div>
-                            <span>Title:</span>
+                    <div className='form-content'>
+                        <div className='form-input-content'>
+                            <span className='form-title'>Title:</span>
                             <input type='text' name='title' onChange={this.handleInputChange} />
                         </div>
-                        <div>
-                            <img clsasName='shadow' src={this.state.img} onLoad={() => this.setState({isLoaded: true})} onError={e => this.onError(e)} style={this.state.isLoaded ? {} : {display: 'none'}} alt=''/>
+                        <div className='form-img-content shadow'>
+                            <img className='form-img' src={this.state.img} onLoad={() => this.setState({isLoaded: true})} onError={e => this.onError(e)} style={this.state.isLoaded ? {} : {display: 'none'}} alt=''/>
                         </div>
-                        <div>
-                            <span>Image URL:</span>
+                        <div className='form-input-content'>
+                            <span className='form-title'>Image URL:</span>
                             <input type='text' name='img' onChange={this.handleInputChange} />
                         </div>
-                        <div>
-                            <span>Content:</span>
-                            <input type='text' name='content' onChange={this.handleInputChange} />
+                        <div className='form-input-content'>
+                            <span className='form-title'>Content:</span>
+                            <textarea type='textarea' rows='5' column='100' name='content' onChange={this.handleInputChange} />
                         </div>
                     </div>
                     <button onClick={this.submitClick}>Post</button>
